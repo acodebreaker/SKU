@@ -44,4 +44,14 @@ public class SkuService {
         }
         stockKeepingUnits = stockKeepingUnits.stream().filter(stockKeeping -> stockKeeping.getSkuCode().equals(stockKeepingUnit.getSkuCode())).map(stockKeeping -> stockKeeping = stockKeepingUnit).collect(Collectors.toList());
     }
+
+    public void deleteStockKeepingUnit(String skuCode) throws CodeDoesNotExistException {
+
+        if (!skuCodes.contains(skuCode)) {
+            throw new CodeDoesNotExistException("Sorry the provide SKU Code doesnot exist");
+        }
+
+        stockKeepingUnits = stockKeepingUnits.stream().filter(stockKeeping -> !stockKeeping.getSkuCode().equals(skuCode)).collect(Collectors.toList());
+    }
+
 }

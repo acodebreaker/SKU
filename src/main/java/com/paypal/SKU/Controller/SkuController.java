@@ -37,4 +37,13 @@ public class SkuController {
             e.printStackTrace();
         }
     }
+
+    @DeleteMapping("sku/{skuCode}")
+    public void deleteSKU(@PathVariable String skuCode) {
+        try {
+            skuService.deleteStockKeepingUnit(skuCode);
+        } catch (CodeDoesNotExistException e) {
+            e.printStackTrace();
+        }
+    }
 }
